@@ -69,8 +69,6 @@ public class BinaryTree<T> {
 	public BinaryTree(){}
 
 	public BinaryTree(BinaryTree<T> binaryTree) {
-		// TODO Auto-generated constructor stub
-
 		root = clone(binaryTree.root);
 		size = binaryTree.size;
 	}
@@ -296,7 +294,8 @@ public class BinaryTree<T> {
 	 * @return a deep copy of the current node object.
 	 */
 	public Node<T> clone(Position<T>p){
-		Node<T> node = (Node<T>)p;
+		Node<T> temp = (Node<T>)p;
+		Node<T> node = new Node<T>(temp);
 		Node<T> left = (Node<T>)p;
 		Node<T> right = (Node<T>)p;
 
@@ -358,7 +357,7 @@ public class BinaryTree<T> {
 	 * @param arr a list object to hold all given positions in the tree.
 	 * @param p the initial position.
 	 */
-	public void Position(ArrayList<Position<T>> arr,Node<T> p){
+	private void Position(ArrayList<Position<T>> arr,Node<T> p){
 		if(p.leftChild != null)
 			Position(arr,p.leftChild);
 		
@@ -378,11 +377,10 @@ public class BinaryTree<T> {
 	}
 	
 	/**
-	 * 
 	 * @param arr a list object to hold all given elements in the tree.
 	 * @param p the initial position.
 	 */
-	public void generateIterator(ArrayList<T> arr,Node<T> p){
+	private void generateIterator(ArrayList<T> arr,Node<T> p){
 		
 		if(p.leftChild != null)
 			generateIterator(arr,p.leftChild);
